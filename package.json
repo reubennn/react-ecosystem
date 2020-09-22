@@ -1,0 +1,18 @@
+{
+  "name": "react-ecosystem",
+  "version": "1.0.0",
+  "description": "Learn about some of the most important tools in the React ecosystem that help you simplify development and manage the complexities of state, side effects, structure, and styling. Instructor Shaun Wassell shows how to create a basic React project, and then explains how to add Redux, create thunks, use selectors, work with styled-components, perform testing, and more.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4"
+  }
+}
