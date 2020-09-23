@@ -4,6 +4,8 @@
   "description": "Learn about some of the most important tools in the React ecosystem that help you simplify development and manage the complexities of state, side effects, structure, and styling. Instructor Shaun Wassell shows how to create a basic React project, and then explains how to add Redux, create thunks, use selectors, work with styled-components, perform testing, and more.",
   "main": "index.js",
   "scripts": {
+    "dev": "npx webpack-dev-server --mode development",
+    "build": "npx webpack --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -16,6 +18,7 @@
     "@babel/preset-react": "^7.10.4",
     "babel-loader": "^8.1.0",
     "css-loader": "^4.3.0",
+    "react-hot-loader": "^4.13.0",
     "style-loader": "^1.2.1",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
