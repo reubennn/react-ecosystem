@@ -1,0 +1,63 @@
+What's the best way to manage state in our application?:
+
+* // ~~~~~~~~~~ Handling React States ~~~~~~~~~~ // *
+
+# Single State =>
+    - State is passed onto children
+! This is a BAD IDEA =>
+    - as the project gets quite large, then we experience severe props drilling
+
+# Props Drilling
+    - Pass props through a Component that doesn't use them, just so it can pass it
+    on to it's Children
+    - Ugly
+    - Hard to troubleshoot
+
+# Components Managing Their Own State =>
+    - Each Component has its own state
+! This is a BAD IDEA =>
+    - Makes it difficult if two components far away in the DOM need to share data
+
+# Global State Management
+    - No props drilling
+    - All Components share the same state
+! This is a BAD IDEA =>
+    - Global state chaos
+    - No rules on how to interact with or access state
+    - Application filled with transient, hard to recreate bugs which occur due
+    to inconsistencies with the state
+
+* // ~~~~~~~~~~ Redux ~~~~~~~~~~ // *
+# Redux is a Global State Management tool
+
+How does it work?:
+    - Components can only interact with the state (central state => The Redux Store)
+    by triggering Redux actions
+    - Only changes to the state that are allowed to take place in the App are the
+    corresponding changes we specify in the Reducers
+
+Used to solve:
+    - Props drilling
+    - State sharing
+    - Global state chaos
+
+# The Redux Store
+    - Single source of truth for all Components
+    - Central global state
+    - Large JSON object for all Components
+    - Can hold any data (user, e-commerce products, blog articles)
+
+
+# Redux Actions
+    - Explicitly define the different events which occur in the application
+    - JSON objects consisting of
+        - Action type => String naming the action
+        - Payload => additional data
+
+# Reducers
+    - Specify what should happen to the Redux Store (central state) when a given action occurs
+
+* Redux Action => Reducer => Redux Store *
+
+Unidirectional Data Flow:
+UI Triggers Action => State is Updated => Components See Updated State => UI Triggers Action =>....
