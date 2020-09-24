@@ -1,0 +1,9 @@
+.completed-button, .remove-button {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+}
+
+.todo-item-container {
+    width: 65%;
+    margin: auto;
+}
