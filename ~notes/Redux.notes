@@ -70,7 +70,7 @@ UI Triggers Action => State is Updated => Components See Updated State => UI Tri
     - Test component as is => testing
 
 # Keep Redux actions and async operations out of your reducers
-    - Reducers specifically for taking current state of Redux store and combining 
+    - Reducers specifically for taking current state of Redux store and combining
     it with an action to get the updated state.
 
 # Think carefully about connecting components

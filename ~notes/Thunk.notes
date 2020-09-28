@@ -1,0 +1,16 @@
+* // ~~~~~~~~~~ Side-Effects ~~~~~~~~~~ // *
+Give us a place to put our side-effect logic
+
+# Side-Effect libraries
+    - Redux Thunk
+    - Redux Saga
+    - Redux Logic
+    - ...
+
+# Redux Thunk acts as a fork to our Redux Processes
+UI Triggers => side fork => Load Data, etc. => State is Updated
+
+How does Redux Thunk work?:
+Components can dispatch a Redux Action,
+or they can dispatch a Thunk that performs an async or conditional operation.
+The Thunk then dispatches it's own Redux Actions based as a result of those operations
