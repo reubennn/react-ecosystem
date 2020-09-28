@@ -7,15 +7,16 @@ import {
     markTodoAsCompleted,
     markAsTodo
 } from "../actions/todoActions";
+import { displayAlert } from "../thunks/todoThunks";
 import "./TodoList.css";
 
 // todos has default property to avoid getting an error
-const TodoList = ({ todos = [], onRemovePressed, onCompletePressed, onTodoPressed }) => (
+const TodoList = ({ todos = [], onRemovePressed, onCompletePressed, onTodoPressed, onDisplayAlertClicked }) => (
     <div className="list-wrapper">
         <NewTodoForm />
         {todos.map((todo) => < TodoListItem todo={todo}
             onRemovePressed={onRemovePressed}
-            onCompletePressed={onCompletePressed}
+            onCompletePressed={onDisplayAlertClicked}
             onTodoPressed={onTodoPressed} />)}
     </div>
 );
@@ -27,7 +28,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     onRemovePressed: text => dispatch(removeTodo(text)),
     onCompletePressed: text => dispatch(markTodoAsCompleted(text)),
-    onTodoPressed: text => dispatch(markAsTodo(text))
+    onTodoPressed: text => dispatch(markAsTodo(text)),
+    onDisplayAlertClicked: text => dispatch(displayAlert(text)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
