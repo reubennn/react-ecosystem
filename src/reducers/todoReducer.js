@@ -66,6 +66,12 @@ export const todos = (state = [], action) => {
                 return todo;
             });
         }
+        case (LOAD_TODOS_SUCCESS): {
+            const {todos} = payload;
+            return todos;
+        }
+        case (LOAD_TODOS_IN_PROGRESS):
+        case (LOAD_TODOS_FAILURE):
         default: {
             /** todos reducer gets called when any Action is triggered in the App
              * If switch block makes it to the default case, then it is an action
