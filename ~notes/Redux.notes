@@ -61,3 +61,17 @@ Used to solve:
 
 Unidirectional Data Flow:
 UI Triggers Action => State is Updated => Components See Updated State => UI Triggers Action =>....
+
+* // ~~~~~~~~~~ Redux Best Practices ~~~~~~~~~~ // *
+
+# Export the connected and unconnected version of a component
+    - Your tests shouldn't care whether your component is connected or not.
+    - Connected version => application
+    - Test component as is => testing
+
+# Keep Redux actions and async operations out of your reducers
+    - Reducers specifically for taking current state of Redux store and combining 
+    it with an action to get the updated state.
+
+# Think carefully about connecting components
+    - Connecting a component can, in practise, make it less reusable.
