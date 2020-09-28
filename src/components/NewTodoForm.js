@@ -9,7 +9,7 @@ const NewTodoForm = ({ todos, onCreatePressed }) => {
         <div className="new-todo-form card">
             <div id="new-todo-body" className="card-body">
                 <h5 id="new-todo-header" className="card-header">New Todo Form</h5>
-                <label for="todo-text">Type your new Todo here:</label>
+                <label htmlFor="todo-text">Type your new Todo here:</label>
                 <input
                     id="new-todo-input"
                     className="form-control"
