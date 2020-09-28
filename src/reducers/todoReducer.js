@@ -1,4 +1,9 @@
-import { CREATE_TODO, REMOVE_TODO } from "../actions/todoActions";
+import {
+    CREATE_TODO,
+    REMOVE_TODO,
+    MARK_TODO_AS_COMPLETED,
+    MARK_AS_TODO
+} from "../actions/todoActions";
 
 export const todos = (state = [], action) => {
     const { type, payload } = action;
@@ -25,6 +30,24 @@ export const todos = (state = [], action) => {
              * using filter => keep only Todos that do not match the text property
              */
             return state.filter(todo => todo.text !== text);
+        }
+        case (MARK_TODO_AS_COMPLETED): {
+            const { text } = payload;
+            return state.map(todo => {
+                if (todo.text === text) {
+                    return { ...todo, isCompleted: true };
+                }
+                return todo;
+            });
+        }
+        case (MARK_AS_TODO): {
+            const { text } = payload;
+            return state.map(todo => {
+                if (todo.text === text) {
+                    return { ...todo, isCompleted: false };
+                }
+                return todo;
+            });
         }
         default: {
             /** todos reducer gets called when any Action is triggered in the App
