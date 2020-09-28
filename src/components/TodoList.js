@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import TodoListItem from "./TodoListItem"
 import NewTodoForm from "./NewTodoForm";
@@ -7,29 +7,40 @@ import {
     markTodoAsCompleted,
     markAsTodo
 } from "../actions/todoActions";
-import { displayAlert } from "../thunks/todoThunks";
+import { loadTodos } from "../thunks/todoThunks";
 import "./TodoList.css";
 
 // todos has default property to avoid getting an error
-const TodoList = ({ todos = [], onRemovePressed, onCompletePressed, onTodoPressed, onDisplayAlertClicked }) => (
-    <div className="list-wrapper">
-        <NewTodoForm />
-        {todos.map((todo) => < TodoListItem todo={todo}
-            onRemovePressed={onRemovePressed}
-            onCompletePressed={onDisplayAlertClicked}
-            onTodoPressed={onTodoPressed} />)}
-    </div>
-);
+const TodoList = ({ todos = [], onRemovePressed, onCompletePressed, onTodoPressed, isLoading, startLoadingTodos }) => {
+    useEffect(() => {
+        startLoadingTodos();
+    }, []);
+    const loadingMessage = <div>Loading Todos...</div>;
+    const content = (
+        <div className="list-wrapper">
+            <NewTodoForm />
+            {todos.map((todo) =>
+                < TodoListItem
+                    key={todo.text}
+                    todo={todo}
+                    onRemovePressed={onRemovePressed}
+                    onCompletePressed={onCompletePressed}
+                    onTodoPressed={onTodoPressed} />)}
+        </div>
+    );
+    return isLoading ? loadingMessage : content;
+};
 
 const mapStateToProps = state => ({
+    isLoading: state.isLoading,
     todos: state.todos,
 });
 
 const mapDispatchToProps = dispatch => ({
+    startLoadingTodos: () => dispatch(loadTodos()),
     onRemovePressed: text => dispatch(removeTodo(text)),
     onCompletePressed: text => dispatch(markTodoAsCompleted(text)),
     onTodoPressed: text => dispatch(markAsTodo(text)),
-    onDisplayAlertClicked: text => dispatch(displayAlert(text)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
