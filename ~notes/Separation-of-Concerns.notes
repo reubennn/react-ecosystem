@@ -1,0 +1,11 @@
+* // ~~~~~~~~~~ Separation of Concerns ~~~~~~~~~~ // *
+
+# Component
+    - Display Data
+
+# Redux Reducers
+    - Manage / make changes to state
+
+# Redux Thunks
+    - Side-effect logic
+    - Server communication
