@@ -3,9 +3,9 @@ export const CREATE_TODO = "CREATE_TODO";
 /** Action Creator = Function that takes extra info as argument
  * Returns action object with info as payload
  */
-export const createTodo = (text) => ({
+export const createTodo = (todo) => ({
     type: CREATE_TODO,
-    payload: { text },
+    payload: { todo },
 });
 
 /**

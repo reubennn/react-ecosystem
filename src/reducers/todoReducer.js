@@ -27,18 +27,14 @@ export const todos = (state = [], action) => {
 
     switch (type) {
         case (CREATE_TODO): {
-            const { text } = payload; // This is the Todo text
+            const { todo } = payload; // This is the Todo text
             // Create new Todo item
-            const newTodo = {
-                text,
-                isCompleted: false,
-            };
             /**
              * Return current state with the new Todo concatenated onto the end
              * Array is not mutated using concat
              * We need to ensure we do not mutate the state in any way
              */
-            return state.concat(newTodo);
+            return state.concat(todo);
         }
         case (REMOVE_TODO): {
             const { text } = payload;
@@ -67,7 +63,7 @@ export const todos = (state = [], action) => {
             });
         }
         case (LOAD_TODOS_SUCCESS): {
-            const {todos} = payload;
+            const { todos } = payload;
             return todos;
         }
         case (LOAD_TODOS_IN_PROGRESS):
