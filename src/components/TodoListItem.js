@@ -1,7 +1,7 @@
 import React from "react";
 import "./TodoListItem.css";
 
-const TodoListItem = ({ todo, onRemovePressed, onCompletePressed, onTodoPressed }) => (
+const TodoListItem = ({ todo, onRemovePressed, onToggleCompletePressed, onCompletePressed, onTodoPressed }) => (
     <div className="todo-item-container card">
         <h3 className="card-header"></h3>
         <div className="card-body text-center">
@@ -9,12 +9,12 @@ const TodoListItem = ({ todo, onRemovePressed, onCompletePressed, onTodoPressed 
             <div className="button-container">
                 {todo.isCompleted ?
                     <button className="completed-button btn btn-dark"
-                        onClick={() => onTodoPressed(todo.id)}
+                        onClick={() => onToggleCompletePressed(todo.id)}
                     >
                         Mark As Todo
                     </button> :
                     <button className="completed-button btn btn-primary"
-                        onClick={() => onCompletePressed(todo.id)}
+                        onClick={() => onToggleCompletePressed(todo.id)}
                     >
                         Mark As Completed
                     </button>

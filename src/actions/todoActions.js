@@ -18,15 +18,9 @@ export const removeTodo = (todo) => ({
     payload: { todo },
 });
 
-export const MARK_TODO_AS_COMPLETED = "MARK_TODO_AS_COMPLETED";
-export const markTodoAsCompleted = (todo) => ({
-    type: MARK_TODO_AS_COMPLETED,
-    payload: { todo },
-});
-
-export const MARK_AS_TODO = "MARK_AS_TODO";
-export const markAsTodo = (todo) => ({
-    type: MARK_AS_TODO,
+export const TOGGLE_TODO_COMPLETED = "TOGGLE_TODO_COMPLETED";
+export const toggleTodoCompleted = (todo) => ({
+    type: TOGGLE_TODO_COMPLETED,
     payload: { todo },
 });
 

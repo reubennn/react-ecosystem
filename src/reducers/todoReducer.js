@@ -1,8 +1,7 @@
 import {
     CREATE_TODO,
     REMOVE_TODO,
-    MARK_TODO_AS_COMPLETED,
-    MARK_AS_TODO,
+    TOGGLE_TODO_COMPLETED,
     LOAD_TODOS_FAILURE,
     LOAD_TODOS_IN_PROGRESS,
     LOAD_TODOS_SUCCESS,
@@ -44,16 +43,7 @@ export const todos = (state = [], action) => {
              */
             return state.filter(todo => todo.id !== todoToRemove.id);
         }
-        case (MARK_TODO_AS_COMPLETED): {
-            const { todo: updatedTodo } = payload;
-            return state.map(todo => {
-                if (todo.id === updatedTodo.id) {
-                    return updatedTodo;
-                }
-                return todo;
-            });
-        }
-        case (MARK_AS_TODO): {
+        case (TOGGLE_TODO_COMPLETED): {
             const { todo: updatedTodo } = payload;
             return state.map(todo => {
                 if (todo.id === updatedTodo.id) {

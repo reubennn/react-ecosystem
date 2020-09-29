@@ -5,13 +5,12 @@ import NewTodoForm from "./NewTodoForm";
 import {
     loadTodos,
     removeTodoRequest,
-    markTodoAsCompleteRequest,
-    markAsTodoRequest,
+    toggleTodoCompleteRequest,
 } from "../thunks/todoThunks";
 import "./TodoList.css";
 
 // todos has default property to avoid getting an error
-const TodoList = ({ todos = [], onRemovePressed, onCompletePressed, onTodoPressed, isLoading, startLoadingTodos }) => {
+const TodoList = ({ todos = [], onRemovePressed, onToggleCompletePressed, isLoading, startLoadingTodos }) => {
     useEffect(() => {
         startLoadingTodos();
     }, []);
@@ -24,8 +23,7 @@ const TodoList = ({ todos = [], onRemovePressed, onCompletePressed, onTodoPresse
                     key={index}
                     todo={todo}
                     onRemovePressed={onRemovePressed}
-                    onCompletePressed={onCompletePressed}
-                    onTodoPressed={onTodoPressed} />
+                    onToggleCompletePressed={onToggleCompletePressed} />
             })}
         </div>
     );
@@ -40,8 +38,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     startLoadingTodos: () => dispatch(loadTodos()),
     onRemovePressed: id => dispatch(removeTodoRequest(id)),
-    onCompletePressed: id => dispatch(markTodoAsCompleteRequest(id)),
-    onTodoPressed: text => dispatch(markAsTodoRequest(text)),
+    onToggleCompletePressed: id => dispatch(toggleTodoCompleteRequest(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
