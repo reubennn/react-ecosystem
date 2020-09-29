@@ -13,9 +13,9 @@ export const createTodo = (todo) => ({
  * createTodo("Go to the store"); // Passing the text of the new Todo
  */
 export const REMOVE_TODO = "REMOVE_TODO";
-export const removeTodo = (text) => ({
+export const removeTodo = (todo) => ({
     type: REMOVE_TODO,
-    payload: { text },
+    payload: { todo },
 });
 
 export const MARK_TODO_AS_COMPLETED = "MARK_TODO_AS_COMPLETED";
