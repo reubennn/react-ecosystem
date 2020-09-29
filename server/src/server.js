@@ -53,7 +53,7 @@ app.post('/todos', (req, res) => {
     }
 });
 
-app.post('/todos/:id/completed', (req, res) => {
+app.put('/todos/:id/completed', (req, res) => {
     const { id } = req.params;
     const matchingTodo = fakeTodos.find(todo => todo.id === id);
     const updatedTodo = {

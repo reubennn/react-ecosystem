@@ -3,10 +3,13 @@ import { connect } from "react-redux";
 import TodoListItem from "./TodoListItem"
 import NewTodoForm from "./NewTodoForm";
 import {
-    markTodoAsCompleted,
     markAsTodo
 } from "../actions/todoActions";
-import { loadTodos, removeTodoRequest } from "../thunks/todoThunks";
+import {
+    loadTodos,
+    removeTodoRequest,
+    markTodoAsCompleteRequest
+} from "../thunks/todoThunks";
 import "./TodoList.css";
 
 // todos has default property to avoid getting an error
@@ -39,7 +42,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     startLoadingTodos: () => dispatch(loadTodos()),
     onRemovePressed: id => dispatch(removeTodoRequest(id)),
-    onCompletePressed: text => dispatch(markTodoAsCompleted(text)),
+    onCompletePressed: id => dispatch(markTodoAsCompleteRequest(id)),
     onTodoPressed: text => dispatch(markAsTodo(text)),
 });
 
