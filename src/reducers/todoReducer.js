@@ -37,12 +37,12 @@ export const todos = (state = [], action) => {
             return state.concat(todo);
         }
         case (REMOVE_TODO): {
-            const { text } = payload;
+            const { todo: todoToRemove } = payload;
             /**
              * Remove the Todo with the text property in the payload
              * using filter => keep only Todos that do not match the text property
              */
-            return state.filter(todo => todo.text !== text);
+            return state.filter(todo => todo.id !== todoToRemove.id);
         }
         case (MARK_TODO_AS_COMPLETED): {
             const { text } = payload;
