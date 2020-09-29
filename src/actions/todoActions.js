@@ -25,9 +25,9 @@ export const markTodoAsCompleted = (todo) => ({
 });
 
 export const MARK_AS_TODO = "MARK_AS_TODO";
-export const markAsTodo = (text) => ({
+export const markAsTodo = (todo) => ({
     type: MARK_AS_TODO,
-    payload: { text },
+    payload: { todo },
 });
 
 // Thunk Actions

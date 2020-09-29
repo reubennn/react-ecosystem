@@ -58,7 +58,7 @@ app.put('/todos/:id/completed', (req, res) => {
     const matchingTodo = fakeTodos.find(todo => todo.id === id);
     const updatedTodo = {
         ...matchingTodo,
-        isCompleted: true,
+        isCompleted: !matchingTodo.isCompleted,
     }
     if (updatedTodo) {
         fakeTodos = fakeTodos.map(todo =>

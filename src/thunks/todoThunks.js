@@ -2,6 +2,7 @@ import {
     createTodo,
     removeTodo,
     markTodoAsCompleted,
+    markAsTodo,
     loadTodosFailure,
     loadTodosInProgress,
     loadTodosSuccess
@@ -64,6 +65,18 @@ export const markTodoAsCompleteRequest = (id) => async (dispatch) => {
         });
         const updatedTodo = await response.json();
         dispatch(markTodoAsCompleted(updatedTodo));
+    } catch (e) {
+        dispatch(displayAlert(e));
+    }
+};
+
+export const markAsTodoRequest = (id) => async (dispatch) => {
+    try {
+        const response = await fetch(`http://localhost:4000/todos/${id}/completed`, {
+            method: "PUT",
+        });
+        const updatedTodo = await response.json();
+        dispatch(markAsTodo(updatedTodo));
     } catch (e) {
         dispatch(displayAlert(e));
     }
