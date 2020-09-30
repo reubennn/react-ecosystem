@@ -9,3 +9,7 @@
 # Redux Thunks
     - Side-effect logic
     - Server communication
+
+# Selectors
+    - Abstracting the state's format
+    - Transforming the state data

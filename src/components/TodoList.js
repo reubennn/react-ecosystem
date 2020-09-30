@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import styled from "styled-components";
 import TodoListItem from "./TodoListItem"
 import NewTodoForm from "./NewTodoForm";
 import {
-    getTodos,
     getTodosLoading,
     getCompletedTodos,
     getIncompleteTodos,
@@ -15,14 +15,29 @@ import {
 } from "../thunks/todoThunks";
 import "./TodoList.css";
 
+/**
+ * Tag function => used to define Styled-Components
+ */
+const BigRedText = styled.div`
+    font-size: 48px;
+    color: #FF0000;
+`;
+
 // todos has default property to avoid getting an error
-const TodoList = ({ completedTodos, incompleteTodos, onRemovePressed, onToggleCompletePressed, isLoading, startLoadingTodos }) => {
+const TodoList = ({
+    completedTodos,
+    incompleteTodos,
+    onRemovePressed,
+    onToggleCompletePressed,
+    isLoading,
+    startLoadingTodos }) => {
     useEffect(() => {
         startLoadingTodos();
     }, []);
     const loadingMessage = <div>Loading Todos...</div>;
     const content = (
         <div className="list-wrapper">
+            <BigRedText>I'm a styled component!</BigRedText>
             <NewTodoForm />
             <h3 className="status-title text-center">Incomplete:</h3>
             {incompleteTodos.map((todo, index) => {
