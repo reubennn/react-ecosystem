@@ -13,7 +13,8 @@ const NewTodoFormStyled = styled.div.attrs({
 })`
     width: 80%;
 	margin: auto;
-	margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 2px grey;
 `;
 
 /**

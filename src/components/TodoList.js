@@ -32,6 +32,7 @@ const StatusTitle = styled.div`
     border-bottom-style: none;
     border-width: thin;
     border-color: #d9d9d9;
+    box-shadow: 0 1px 2px grey;
 `;
 
 // todos has default property to avoid getting an error
