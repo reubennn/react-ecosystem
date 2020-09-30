@@ -13,14 +13,25 @@ import {
     removeTodoRequest,
     toggleTodoCompleteRequest,
 } from "../thunks/todoThunks";
-import "./TodoList.css";
+// import "./TodoList.css";
 
 /**
- * Tag function => used to define Styled-Components
+ * Styled-Component
  */
-const BigRedText = styled.div`
-    font-size: 48px;
-    color: #FF0000;
+const StatusTitle = styled.div`
+    color: #fff;
+    background-color: #6e6e6e;
+    margin: 0.75rem auto 0 auto;
+    width: 65%;
+    padding: 0.25rem 0;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+    border: solid;
+    border-radius: 0.25rem;
+    border-bottom-style: none;
+    border-width: thin;
+    border-color: #d9d9d9;
 `;
 
 // todos has default property to avoid getting an error
@@ -37,9 +48,8 @@ const TodoList = ({
     const loadingMessage = <div>Loading Todos...</div>;
     const content = (
         <div className="list-wrapper">
-            <BigRedText>I'm a styled component!</BigRedText>
             <NewTodoForm />
-            <h3 className="status-title text-center">Incomplete:</h3>
+            <StatusTitle >Incomplete</StatusTitle>
             {incompleteTodos.map((todo, index) => {
                 return < TodoListItem
                     key={index}
@@ -47,7 +57,7 @@ const TodoList = ({
                     onRemovePressed={onRemovePressed}
                     onToggleCompletePressed={onToggleCompletePressed} />
             })}
-            <h3 className="status-title text-center">Completed:</h3>
+            <StatusTitle >Complete</StatusTitle>
             {completedTodos.map((todo, index) => {
                 return < TodoListItem
                     key={index}

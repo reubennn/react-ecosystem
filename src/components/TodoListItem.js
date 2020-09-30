@@ -1,33 +1,47 @@
 import React from "react";
-import "./TodoListItem.css";
+// import "./TodoListItem.css";
+import styled from "styled-components";
+
+/**
+ * Styled-Components
+ */
+const Button = styled.button`
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+`;
+
+const TodoItemContainer = styled.div`
+    width: 65%;
+    margin: auto;
+`
+
 
 const TodoListItem = ({ todo, onRemovePressed, onToggleCompletePressed, onCompletePressed, onTodoPressed }) => (
-    <div className="todo-item-container card">
-        <h3 className="card-header"></h3>
+    <TodoItemContainer className="card">
         <div className="card-body text-center">
             <h4 className="card-title">{todo.text}</h4>
             <div className="button-container">
                 {todo.isCompleted ?
-                    <button className="completed-button btn btn-dark"
+                    <Button className="btn btn-dark"
                         onClick={() => onToggleCompletePressed(todo.id)}
                     >
                         Mark As Todo
-                    </button> :
-                    <button className="completed-button btn btn-primary"
+                    </Button> :
+                    <Button className="btn btn-primary"
                         onClick={() => onToggleCompletePressed(todo.id)}
                     >
                         Mark As Completed
-                    </button>
+                    </Button>
                 }
-                <button
-                    className="remove-button btn btn-danger"
+                <Button
+                    className="btn btn-danger"
                     onClick={() => onRemovePressed(todo.id)}
                 >
                     Remove
-                </button>
+                </Button>
             </div>
         </div>
-    </div>
+    </TodoItemContainer>
 );
 
 export default TodoListItem;

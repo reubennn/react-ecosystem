@@ -2,25 +2,79 @@ import React, { useState } from "react";
 import { connect } from "react-redux"; // Higher order function
 import { getTodos } from "../selectors/selectors";
 import { addTodoRequest } from "../thunks/todoThunks";
-import "./NewTodoForm.css";
+import styled from "styled-components";
+// import "./NewTodoForm.css";
+
+/**
+ * Styled-Components
+ */
+const NewTodoFormStyled = styled.div.attrs({
+    className: "card",
+})`
+    width: 80%;
+	margin: auto;
+	margin-bottom: 1.5rem;
+`;
+
+/**
+ * &&& ensures highest specificity
+ * This is required to override Bootstrap CSS
+ */
+const NewTodoBody = styled.div.attrs({
+    className: "card-body",
+})`
+    &&& {
+        padding: 0;
+    }
+`;
+
+const NewTodoLabel = styled.label.attrs({
+    htmlFor: "todo-text",
+})`
+    margin: 0.25rem auto;
+    width: 100%;
+    text-align: center;
+`;
+
+const NewTodoInput = styled.input`
+    &&& {
+        width: 80%;
+        margin: 0.25rem auto;
+    }
+`;
+
+const NewTodoHeader = styled.h5.attrs({
+    className: "card-header",
+})`
+    &&& {
+        background-color: #414040;
+        color: #fff;
+        font-weight: bold;
+    }
+`;
+
+const NewTodoButton = styled.button`
+    &&& {
+        margin: 1rem auto 1rem auto;
+        display: block;
+    }
+`;
 
 const NewTodoForm = ({ todos, onCreatePressed }) => {
     const [inputValue, setInputValue] = useState("");
     return (
-        <div className="new-todo-form card">
-            <div id="new-todo-body" className="card-body">
-                <h5 id="new-todo-header" className="card-header">New Todo Form</h5>
-                <label htmlFor="todo-text">Type your new Todo here:</label>
-                <input
-                    id="new-todo-input"
+        <NewTodoFormStyled>
+            <NewTodoBody >
+                <NewTodoHeader >New To-do Form</NewTodoHeader>
+                <NewTodoLabel >Type your new To-do here:</NewTodoLabel>
+                <NewTodoInput
                     className="form-control"
                     type="text"
                     placeholder="Add apples to the grocery list..."
                     value={inputValue}
                     onChange={e => setInputValue(e.target.value)}
                 />
-                <button
-                    id="new-todo-button"
+                <NewTodoButton
                     className="btn btn-primary"
                     onClick={() => {
                         const isDuplicateText =
@@ -31,9 +85,9 @@ const NewTodoForm = ({ todos, onCreatePressed }) => {
                         };
                     }}>
                     Create Todo
-                </button>
-            </div>
-        </div>
+                </NewTodoButton>
+            </NewTodoBody>
+        </NewTodoFormStyled>
     );
 };
 
