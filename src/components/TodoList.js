@@ -2,7 +2,12 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import TodoListItem from "./TodoListItem"
 import NewTodoForm from "./NewTodoForm";
-import { getTodos, getTodosLoading } from "../selectors/selectors";
+import {
+    getTodos,
+    getTodosLoading,
+    getCompletedTodos,
+    getIncompleteTodos,
+} from "../selectors/selectors";
 import {
     loadTodos,
     removeTodoRequest,
@@ -11,7 +16,7 @@ import {
 import "./TodoList.css";
 
 // todos has default property to avoid getting an error
-const TodoList = ({ todos = [], onRemovePressed, onToggleCompletePressed, isLoading, startLoadingTodos }) => {
+const TodoList = ({ completedTodos, incompleteTodos, onRemovePressed, onToggleCompletePressed, isLoading, startLoadingTodos }) => {
     useEffect(() => {
         startLoadingTodos();
     }, []);
@@ -19,7 +24,16 @@ const TodoList = ({ todos = [], onRemovePressed, onToggleCompletePressed, isLoad
     const content = (
         <div className="list-wrapper">
             <NewTodoForm />
-            {todos.map((todo, index) => {
+            <h3 className="status-title text-center">Incomplete:</h3>
+            {incompleteTodos.map((todo, index) => {
+                return < TodoListItem
+                    key={index}
+                    todo={todo}
+                    onRemovePressed={onRemovePressed}
+                    onToggleCompletePressed={onToggleCompletePressed} />
+            })}
+            <h3 className="status-title text-center">Completed:</h3>
+            {completedTodos.map((todo, index) => {
                 return < TodoListItem
                     key={index}
                     todo={todo}
@@ -34,7 +48,8 @@ const TodoList = ({ todos = [], onRemovePressed, onToggleCompletePressed, isLoad
 const mapStateToProps = state => ({
     // Use Redux selectors
     isLoading: getTodosLoading(state),
-    todos: getTodos(state),
+    completedTodos: getCompletedTodos(state),
+    incompleteTodos: getIncompleteTodos(state),
 });
 
 const mapDispatchToProps = dispatch => ({
