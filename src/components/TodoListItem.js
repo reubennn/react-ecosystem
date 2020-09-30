@@ -26,7 +26,7 @@ const TodoItemContainer = styled.div.attrs({
     }
 `
 
-const TodoListItem = ({ todo, onRemovePressed, onToggleCompletePressed, onCompletePressed, onTodoPressed }) => (
+const TodoListItem = ({ todo, onRemovePressed, onToggleCompletePressed }) => (
     <TodoItemContainer createdOn={todo.createdOn}>
         <div className="card-body text-center">
             <h4 className="card-title">{todo.text}</h4>
