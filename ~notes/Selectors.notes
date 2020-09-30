@@ -3,3 +3,7 @@
 Why do we need selectors?:
     - Selectors gives us a place to put logic for combining, filtering, transforming and storing data
     - Computes derived data, so the Redux store state is kept in the minimal possible state
+
+# Redux Reselect
+    - Builds complex logic for selectors
+    - When we need to create selectors which make use of other selectors
