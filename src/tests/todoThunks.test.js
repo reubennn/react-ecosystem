@@ -46,5 +46,5 @@ describe("REDUX THUNK: loadTodos():", () => {
 
         // Reset fetch to original state
         fetchMock.reset();
-    })
+    });
 });

@@ -5,6 +5,18 @@ import styled from "styled-components";
 /**
  * Styled-Components
  */
+
+/**
+ * Returns styling based on the starting date a component was created
+ *
+ * exported to allow a method to test the logic
+ */
+export const getBorderStyleForDate = (startingDate, currentDate) => {
+    return (startingDate > new Date(currentDate - 86400000 * 8)) ?
+        "none" :
+        "1px solid red";
+};
+
 const Button = styled.button`
     margin-left: 0.25rem;
     margin-right: 0.25rem;
@@ -19,12 +31,6 @@ const TodoItemContainer = styled.div.attrs({
         box-shadow: 0 1px 2px grey;
     }
 `;
-
-export const getBorderStyleForDate = (startingDate, currentDate) => {
-    (startingDate > new Date(currentDate - 86400000 * 8)) ?
-        "none" :
-        "1px solid red";
-};
 
 /**
  * Inherits styles from TodoItemContainer

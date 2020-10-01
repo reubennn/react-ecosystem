@@ -22,29 +22,30 @@ describe("REDUX SELECTORS:", () => {
         const actual = getCompletedTodos.resultFunc(fakeTodos);
 
         expect(actual).to.deep.equal(expected);
-    }),
-        it("getIncompleteTodos: Returns only incompleted to-dos", () => {
-            const fakeTodos = [{
-                text: "Say Hello",
-                isCompleted: true,
-            }, {
-                text: "Say Goodbye",
-                isCompleted: false,
-            }, {
-                text: "Climb Mount Everest",
-                isCompleted: false,
-            }];
+    });
 
-            const expected = [{
-                text: "Say Goodbye",
-                isCompleted: false,
-            }, {
-                text: "Climb Mount Everest",
-                isCompleted: false,
-            }];
+    it("getIncompleteTodos: Returns only incompleted to-dos", () => {
+        const fakeTodos = [{
+            text: "Say Hello",
+            isCompleted: true,
+        }, {
+            text: "Say Goodbye",
+            isCompleted: false,
+        }, {
+            text: "Climb Mount Everest",
+            isCompleted: false,
+        }];
 
-            const actual = getIncompleteTodos.resultFunc(fakeTodos);
+        const expected = [{
+            text: "Say Goodbye",
+            isCompleted: false,
+        }, {
+            text: "Climb Mount Everest",
+            isCompleted: false,
+        }];
 
-            expect(actual).to.deep.equal(expected);
-        });
+        const actual = getIncompleteTodos.resultFunc(fakeTodos);
+
+        expect(actual).to.deep.equal(expected);
+    });
 });
