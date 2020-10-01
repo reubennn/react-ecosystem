@@ -7,7 +7,7 @@ import {
     getTodosLoading,
     getCompletedTodos,
     getIncompleteTodos,
-} from "../selectors/selectors";
+} from "../selectors/todoSelectors";
 import {
     loadTodos,
     removeTodoRequest,

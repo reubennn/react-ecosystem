@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux"; // Higher order function
-import { getTodos } from "../selectors/selectors";
+import { getTodos } from "../selectors/todoSelectors";
 import { addTodoRequest } from "../thunks/todoThunks";
 import styled from "styled-components";
 // import "./NewTodoForm.css";
