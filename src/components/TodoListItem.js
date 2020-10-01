@@ -20,6 +20,12 @@ const TodoItemContainer = styled.div.attrs({
     }
 `;
 
+export const getBorderStyleForDate = (startingDate, currentDate) => {
+    (startingDate > new Date(currentDate - 86400000 * 8)) ?
+        "none" :
+        "1px solid red";
+};
+
 /**
  * Inherits styles from TodoItemContainer
  *
@@ -29,10 +35,7 @@ const TodoItemContainer = styled.div.attrs({
  */
 const TodoItemContainerWithWarning = styled(TodoItemContainer)`
     &&& {
-        border: ${props =>
-        (new Date(props.createdOn) > new Date(Date.now() - 86400000 * 8)) ?
-            "none" :
-            "1px solid red"};
+        border: ${props => getBorderStyleForDate(new Date(props.createdOn), Date.now())};
     }
 `;
 
